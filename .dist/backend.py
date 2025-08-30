@@ -5,15 +5,10 @@ from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
-from langchain_community.chat_models import ChatOllama
-
 
 load_dotenv()
 
-llm = ChatOllama(
-    model="qwen2.5:1.5b",  # or "llama2", "mistral", etc.
-    base_url="http://127.0.0.1:11434"
-)
+llm = ChatOpenAI()
 
 class ChatState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
